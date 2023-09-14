@@ -13,16 +13,13 @@ import {MatIconModule} from "@angular/material/icon";
   template: `
       <mat-nav-list>
           <a mat-list-item>
-
-              <span matListItemIcon> <mat-icon color="primary" fontIcon="edit"/></span>
-              <span matListItemTitle> Edit Product</span>
-              <span matLine>edit {{product.name}}</span>
+              <span matListItemIcon> <mat-icon fontIcon="edit"/></span>
+              <span matListItemTitle> Edit {{product.name}} </span>
           </a>
 
           <a mat-list-item>
-              <span matListItemIcon><mat-icon color="warn" fontIcon="delete"/></span>
-              <span matListItemTitle>Delete Product</span>
-              <span matLine>delete  {{product.name}}</span>
+              <span matListItemIcon><mat-icon fontIcon="delete"/></span>
+              <span matListItemTitle>Delete {{product.name}}</span>
           </a>
 
       </mat-nav-list>
