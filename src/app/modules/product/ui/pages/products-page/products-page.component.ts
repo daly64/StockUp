@@ -9,8 +9,7 @@ import {ProductsListComponent} from "../elements/products-list/products-list.com
   template: `
       <productsList/>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class ProductsPageComponent {
 

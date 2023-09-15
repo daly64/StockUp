@@ -26,7 +26,7 @@ const ELEMENT_DATA: ProductModel[] = [
   standalone: true,
   imports: [CommonModule, MatTableModule, MatInputModule, MatBottomSheetModule, MatIconModule],
   template: `
-      <div>
+      <div class="list">
 
           <table [dataSource]="data" class="mat-elevation-z7" mat-table>
               <ng-container matColumnDef="{{columnsToDisplay[0]}}">
@@ -46,7 +46,12 @@ const ELEMENT_DATA: ProductModel[] = [
 
       </div>
   `,
-  styles: [``],
+  styles: [`
+    .list{
+      margin: 10px;
+      min-width: 95%;
+      min-height:90%;
+    }`],
 })
 export class ProductsListComponent {
   data = ELEMENT_DATA
