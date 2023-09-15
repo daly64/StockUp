@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MatIconModule} from "@angular/material/icon";
 
 @Component({
-  selector: 'toolbarTitle',
+  selector: 'NavBarTitle',
   standalone: true,
   imports: [CommonModule, MatIconModule],
   template: `
@@ -26,7 +26,7 @@ import {MatIconModule} from "@angular/material/icon";
       }
   `]
 })
-export class ToolbarTitleComponent {
+export class NavBarTitleComponent {
   @Input()
   title: string = ''
 

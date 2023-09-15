@@ -4,8 +4,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {ToolbarTitleComponent} from "./toolbar-title/toolbar-title.component";
 import {Router} from "@angular/router";
+import {NavBarTitleComponent} from "./toolbar-title/navbar-title.component";
 
 @Component({
   selector: 'navBar',
@@ -16,12 +16,12 @@ import {Router} from "@angular/router";
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    ToolbarTitleComponent,
+    NavBarTitleComponent,
   ],
   template: `
       <mat-toolbar color="primary">
           <mat-toolbar-row>
-              <toolbarTitle [title]="title"/>
+              <NavBarTitle [title]="title"/>
               <span class="example-spacer"></span>
               <!--        <span>{{pageName}}</span>-->
               <div [ngSwitch]="pageName">
