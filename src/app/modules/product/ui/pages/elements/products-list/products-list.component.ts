@@ -26,32 +26,28 @@ const ELEMENT_DATA: ProductModel[] = [
   standalone: true,
   imports: [CommonModule, MatTableModule, MatInputModule, MatBottomSheetModule, MatIconModule],
   template: `
-      <div class="list">
 
-          <table [dataSource]="data" class="mat-elevation-z7" mat-table>
-              <ng-container matColumnDef="{{columnsToDisplay[0]}}">
-                  <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[0]}}</th>
-                  <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.name}} </td>
-              </ng-container>
+      <table [dataSource]="data" class="mat-elevation-z0 list" mat-table>
+          <ng-container matColumnDef="{{columnsToDisplay[0]}}">
+              <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[0]}}</th>
+              <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.name}} </td>
+          </ng-container>
 
-              <ng-container matColumnDef="{{columnsToDisplay[1]}}">
-                  <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[1]}}</th>
-                  <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.quantity}} </td>
-              </ng-container>
+          <ng-container matColumnDef="{{columnsToDisplay[1]}}">
+              <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[1]}}</th>
+              <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.quantity}} </td>
+          </ng-container>
 
 
-              <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
-              <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
-          </table>
-
-      </div>
+          <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
+      </table>
   `,
   styles: [`
-    .list{
-      margin: 10px;
-      min-width: 95%;
-      min-height:90%;
-    }`],
+      .list {
+          width: 95%;
+          max-height: 95%;
+      }`],
 })
 export class ProductsListComponent {
   data = ELEMENT_DATA
