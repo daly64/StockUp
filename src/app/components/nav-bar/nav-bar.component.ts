@@ -5,6 +5,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {ToolbarTitleComponent} from "./toolbar-title/toolbar-title.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'navBar',
@@ -18,21 +19,44 @@ import {ToolbarTitleComponent} from "./toolbar-title/toolbar-title.component";
     ToolbarTitleComponent,
   ],
   template: `
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <toolbarTitle [title]="title"/>
-        <span class="example-spacer"></span>
-      </mat-toolbar-row>
+      <mat-toolbar color="primary">
+          <mat-toolbar-row>
+              <toolbarTitle [title]="title"/>
+              <span class="example-spacer"></span>
+              <!--        <span>{{pageName}}</span>-->
+              <div [ngSwitch]="pageName">
+                  <button *ngSwitchCase="'Products Page'" mat-button>
+                      <mat-icon fontIcon="add" inline/>
+                      New Product
+                  </button>
+              </div>
 
-    </mat-toolbar>
+          </mat-toolbar-row>
+
+      </mat-toolbar>
   `,
   styles: [`
-    .example-spacer {
-      flex: 1 1 auto;
+      .example-spacer {
+          flex: 1 1 auto;
+      }
 
-    }`]
+      span {
+          font-size: 20px;
+          letter-spacing: 2px;
+          font-family: Roboto, sans-serif;
+      }
+
+  `]
 })
 export class NavBarComponent {
   @Input()
-  title: string = "";
+  title: string;
+  pageName: string;
+
+  constructor(private router: Router) {
+    if(router.url === "/"){
+      this.pageName="Products Page"
+    }
+
+  }
 }

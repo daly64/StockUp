@@ -26,9 +26,9 @@ const ELEMENT_DATA: ProductModel[] = [
   standalone: true,
   imports: [CommonModule, MatTableModule, MatInputModule, MatBottomSheetModule, MatIconModule],
   template: `
-      <div class="main">
+      <div>
 
-          <table [dataSource]="data" class="mat-elevation-z7 table" mat-table>
+          <table [dataSource]="data" class="mat-elevation-z7" mat-table>
               <ng-container matColumnDef="{{columnsToDisplay[0]}}">
                   <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[0]}}</th>
                   <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.name}} </td>
@@ -43,24 +43,10 @@ const ELEMENT_DATA: ProductModel[] = [
               <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
               <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
           </table>
-          <!--        (click)="openBottomSheet()"-->
 
       </div>
   `,
-  styles: [`
-      .main {
-          margin: 10px;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-      }
-
-      .table {
-          min-width: 85%;
-      }
-
-
-  `],
+  styles: [``],
 })
 export class ProductsListComponent {
   data = ELEMENT_DATA
