@@ -9,6 +9,7 @@ import {TableSheetComponent} from "../table-sheet/table-sheet.component";
 import {MatBottomSheet, MatBottomSheetModule,} from '@angular/material/bottom-sheet';
 import {ProductService} from "../../../../services/product.service";
 import {HttpClientModule} from "@angular/common/http";
+import {interval, map} from "rxjs";
 
 
 @Component({
@@ -17,22 +18,23 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [CommonModule, MatTableModule, MatInputModule, MatBottomSheetModule, MatIconModule, HttpClientModule],
   providers: [ProductService],
   template: `
+    <div *ngIf="products$ | async">
+      <table [dataSource]=" products$" class="mat-elevation-z0 list" mat-table>
+        <ng-container matColumnDef="{{columnsToDisplay[0]}}">
+          <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[0]}}</th>
+          <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.name}} </td>
+        </ng-container>
 
-    <table [dataSource]="data" class="mat-elevation-z0 list" mat-table>
-      <ng-container matColumnDef="{{columnsToDisplay[0]}}">
-        <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[0]}}</th>
-        <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.name}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="{{columnsToDisplay[1]}}">
-        <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[1]}}</th>
-        <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.quantity}} </td>
-      </ng-container>
+        <ng-container matColumnDef="{{columnsToDisplay[1]}}">
+          <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[1]}}</th>
+          <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.quantity}} </td>
+        </ng-container>
 
 
-      <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
-      <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
-    </table>
+        <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
+      </table>
+    </div>
   `,
   styles: [`
     .list {
@@ -41,9 +43,14 @@ import {HttpClientModule} from "@angular/common/http";
     }`],
 })
 export class ProductsListComponent implements OnInit {
-  data: Array<ProductModel>
-
+  // data$: Observable<ProductModel[]> = this.productService.getAllProducts()
   columnsToDisplay = ['product name', 'quantity'];
+
+  products$ = interval(100).pipe(
+    map(() => {
+      return this.productService.getAllProducts()
+    }),
+  )
 
   constructor(private _bottomSheet: MatBottomSheet, private productService: ProductService) {
   }
@@ -52,10 +59,14 @@ export class ProductsListComponent implements OnInit {
     this._bottomSheet.open(TableSheetComponent, {data: element});
   }
 
+
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe({
-      next: (data) => this.data = data as Array<ProductModel>,
-      error: (err) => console.log(err)
-    })
+
+    /*    this.productService.getAllProducts().subscribe({
+          next: (data) => this.data = data as Array<ProductModel>,
+          error: (err) => console.log(err)
+        })*/
   }
+
+
 }

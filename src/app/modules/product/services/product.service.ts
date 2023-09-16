@@ -6,17 +6,23 @@ import {ProductModel} from "../models/ProductModel";
   providedIn: 'root'
 })
 export class ProductService {
-  private Url = 'https://stockup-api.onrender.com/products';
+  Url = 'https://stockup-api.onrender.com/products';
+  products: ProductModel[]
 
   constructor(private httpClient: HttpClient) {
   }
 
   getAllProducts() {
-    return this.httpClient.get(this.Url)
+    // return this.httpClient.get<ProductModel[]>(this.Url)
+
+    this.httpClient.get<ProductModel[]>(this.Url)
+      .subscribe(data => this.products = data)
+    return this.products
+
   }
 
   getProductById(product: ProductModel) {
-    return this.httpClient.get(this.Url + "/id/" + product.id)
+    return this.httpClient.get<ProductModel>(this.Url + "/id/" + product.id)
   }
 
   addProduct(product: ProductModel) {
@@ -32,7 +38,8 @@ export class ProductService {
   }
 
   deleteProduct(product: ProductModel) {
-    this.httpClient.delete(this.Url + "/delete", {body: product})
+    this.httpClient.delete(this.Url + "/delete", {body: product, responseType: 'text'})
+      .subscribe({next: response => console.log(response), error: err => console.log(err)})
   }
 
 

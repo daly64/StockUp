@@ -64,6 +64,7 @@ export class AddProductDialogComponent {
   addProduct() {
     let newProduct: ProductModel = {name: this.productName, quantity: this.productQuantity}
     this.productService.addProduct(newProduct)
+    this.productService.getAllProducts()
     this.dialogRef.close();
   }
 
