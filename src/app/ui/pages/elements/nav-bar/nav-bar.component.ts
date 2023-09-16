@@ -9,7 +9,7 @@ import {NavBarTitleComponent} from "./toolbar-title/navbar-title.component";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {
   AddProductDialogComponent
-} from "../../../../modules/product/ui/pages/add-product-dialog/add-product-dialog.component";
+} from "../../../../modules/product/ui/pages/elements/add-product-dialog/add-product-dialog.component";
 
 @Component({
   selector: 'navBar',

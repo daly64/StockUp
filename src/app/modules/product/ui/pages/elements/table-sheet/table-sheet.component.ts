@@ -27,7 +27,7 @@ import {MatIconModule} from "@angular/material/icon";
   styles: []
 })
 export class TableSheetComponent {
-  product: ProductModel = {id: 1, name: "", quantity: 1}
+  product: ProductModel = {id: "1", name: "", quantity: 1}
 
   constructor(private _bottomSheetRef: MatBottomSheetRef<TableSheetComponent>,
               @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
