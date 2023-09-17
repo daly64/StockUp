@@ -1,22 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatTableModule} from "@angular/material/table";
-import {MatInputModule} from "@angular/material/input";
 import {ProductModel} from "../../../../models/ProductModel";
-import {MatIconModule} from "@angular/material/icon";
-
 import {TableSheetComponent} from "../table-sheet/table-sheet.component";
-import {MatBottomSheet, MatBottomSheetModule,} from '@angular/material/bottom-sheet';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {ProductService} from "../../../../services/product.service";
-import {HttpClientModule} from "@angular/common/http";
 import {interval, map} from "rxjs";
 
 
 @Component({
   selector: 'productsList',
-  standalone: true,
-  imports: [CommonModule, MatTableModule, MatInputModule, MatBottomSheetModule, MatIconModule, HttpClientModule],
-  providers: [ProductService],
   template: `
     <div *ngIf="products$ | async">
       <table [dataSource]=" products$" class="mat-elevation-z0 list" mat-table>

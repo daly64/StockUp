@@ -1,18 +1,10 @@
 import {Component, Inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
-import {MatListModule} from "@angular/material/list";
-import {MatLineModule} from "@angular/material/core";
 import {ProductModel} from "../../../../models/ProductModel";
-import {MatIconModule} from "@angular/material/icon";
 import {ProductService} from "../../../../services/product.service";
-import {HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'TableSheet',
-  standalone: true,
-  imports: [CommonModule, MatListModule, MatLineModule, MatIconModule,HttpClientModule],
-  providers: [ProductService],
   template: `
     <mat-nav-list>
       <a mat-list-item>

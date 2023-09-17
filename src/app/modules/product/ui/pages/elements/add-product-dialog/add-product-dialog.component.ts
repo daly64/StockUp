@@ -1,19 +1,10 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {MatInputModule} from "@angular/material/input";
-import {HttpClientModule} from "@angular/common/http";
+import {MatDialogRef} from "@angular/material/dialog";
 import {ProductService} from "../../../../services/product.service";
-import {FormsModule} from "@angular/forms";
 import {ProductModel} from "../../../../models/ProductModel";
 
 @Component({
   selector: 'appAddProductDialog',
-  standalone: true,
-  imports: [CommonModule, MatDialogModule, MatCardModule, MatButtonModule, MatInputModule, HttpClientModule, FormsModule],
-  providers: [ProductService],
   template: `
     <mat-card class="example-full-width">
       <mat-card-header>

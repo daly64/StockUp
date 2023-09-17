@@ -6,7 +6,7 @@ import {ProductModel} from "../models/ProductModel";
   providedIn: 'root'
 })
 export class ProductService {
-  Url = 'https://stockup-api.onrender.com/products';
+  Url = 'https://stockup-api.onrender.com/products'
   products: ProductModel[]
 
   constructor(private httpClient: HttpClient) {

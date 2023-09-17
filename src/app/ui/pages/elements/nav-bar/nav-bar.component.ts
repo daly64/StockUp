@@ -1,28 +1,12 @@
 import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
-import {MatTooltipModule} from "@angular/material/tooltip";
 import {Router} from "@angular/router";
-import {NavBarTitleComponent} from "./toolbar-title/navbar-title.component";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {
   AddProductDialogComponent
 } from "../../../../modules/product/ui/pages/elements/add-product-dialog/add-product-dialog.component";
 
 @Component({
   selector: 'navBar',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    NavBarTitleComponent,
-    MatDialogModule,
-  ],
   template: `
     <mat-toolbar color="primary">
       <mat-toolbar-row>
