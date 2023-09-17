@@ -31,6 +31,7 @@ export class TableSheetComponent {
 
   deleteProduct() {
     this.productService.deleteProduct(this.product)
+    window.location.reload()
     this.bottomSheetRef.dismiss()
   }
 }

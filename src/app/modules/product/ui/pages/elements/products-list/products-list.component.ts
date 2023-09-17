@@ -35,6 +35,7 @@ import {Observable} from "rxjs";
 })
 export class ProductsListComponent {
   data$: Observable<ProductModel[]> = this.productService.getAllProducts()
+
   columnsToDisplay = ['product name', 'quantity'];
 
 

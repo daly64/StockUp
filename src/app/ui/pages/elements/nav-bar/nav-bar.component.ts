@@ -1,6 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+import {
+  AddProductDialogComponent
+} from "../../../../modules/product/ui/pages/elements/add-product-dialog/add-product-dialog.component";
 
 @Component({
   selector: 'navBar',
@@ -46,6 +49,8 @@ export class NavBarComponent {
   }
 
   goAddProductPage() {
-    this.router.navigate(["addProduct"])
+    // this.router.navigate(["addProduct"])
+    this.dialog.open(AddProductDialogComponent);
+
   }
 }

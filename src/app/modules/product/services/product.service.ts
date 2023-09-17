@@ -34,6 +34,7 @@ export class ProductService {
   deleteProduct(product: ProductModel) {
     this.httpClient.delete(this.Url + "/delete", {body: product, responseType: 'text'})
       .subscribe({next: response => console.log(response), error: err => console.log(err)})
+
   }
 
 
