@@ -1,9 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {
-  AddProductDialogComponent
-} from "../../../../modules/product/ui/pages/elements/add-product-dialog/add-product-dialog.component";
 
 @Component({
   selector: 'navBar',
@@ -14,7 +11,7 @@ import {
         <span class="example-spacer"></span>
         <!--        <span>{{pageName}}</span>-->
         <div [ngSwitch]="pageName">
-          <button *ngSwitchCase="'Products Page'" (click)="openDialog()" mat-button>
+          <button (click)="goAddProductPage()" *ngSwitchCase="'Products Page'" mat-button>
             <mat-icon fontIcon="add" inline/>
             New Product
           </button>
@@ -48,7 +45,7 @@ export class NavBarComponent {
     }
   }
 
-  openDialog(): void {
-    this.dialog.open(AddProductDialogComponent);
+  goAddProductPage() {
+    this.router.navigate(["addProduct"])
   }
 }

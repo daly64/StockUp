@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductModel} from "../../../../models/ProductModel";
 import {TableSheetComponent} from "../table-sheet/table-sheet.component";
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {ProductService} from "../../../../services/product.service";
-import {interval, map} from "rxjs";
+import {Observable} from "rxjs";
 
 
 @Component({
   selector: 'productsList',
   template: `
-    <div *ngIf="products$ | async">
-      <table [dataSource]=" products$" class="mat-elevation-z0 list" mat-table>
+    <div *ngIf=" data$ | async as data">
+      <table [dataSource]=" data" class="mat-elevation-z0 list" mat-table>
         <ng-container matColumnDef="{{columnsToDisplay[0]}}">
           <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[0]}}</th>
           <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.name}} </td>
@@ -33,30 +33,16 @@ import {interval, map} from "rxjs";
       max-height: 95%;
     }`],
 })
-export class ProductsListComponent implements OnInit {
-  // data$: Observable<ProductModel[]> = this.productService.getAllProducts()
+export class ProductsListComponent {
+  data$: Observable<ProductModel[]> = this.productService.getAllProducts()
   columnsToDisplay = ['product name', 'quantity'];
 
-  products$ = interval(100).pipe(
-    map(() => {
-      return this.productService.getAllProducts()
-    }),
-  )
 
-  constructor(private _bottomSheet: MatBottomSheet, private productService: ProductService) {
+  constructor(private bottomSheet: MatBottomSheet, private productService: ProductService) {
   }
 
   openBottomSheet(element: ProductModel): void {
-    this._bottomSheet.open(TableSheetComponent, {data: element});
-  }
-
-
-  ngOnInit(): void {
-
-    /*    this.productService.getAllProducts().subscribe({
-          next: (data) => this.data = data as Array<ProductModel>,
-          error: (err) => console.log(err)
-        })*/
+    this.bottomSheet.open(TableSheetComponent, {data: element});
   }
 
 

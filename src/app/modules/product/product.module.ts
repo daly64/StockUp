@@ -18,6 +18,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatLineModule} from "@angular/material/core";
 import {ProductEditPageComponent} from "./ui/pages/product-edit-page/product-edit-page.component";
 import {ProductsPageComponent} from "./ui/pages/products-page/products-page.component";
+import { ProductAddPageComponent } from './ui/pages/product-add-page/product-add-page.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {ProductsPageComponent} from "./ui/pages/products-page/products-page.comp
     TableSheetComponent,
     ProductEditPageComponent,
     ProductsPageComponent,
+    ProductAddPageComponent,
   ],
   imports: [
     CommonModule,

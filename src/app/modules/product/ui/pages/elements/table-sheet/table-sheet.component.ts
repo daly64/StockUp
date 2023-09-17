@@ -24,12 +24,13 @@ import {ProductService} from "../../../../services/product.service";
 export class TableSheetComponent {
   product: ProductModel = {id: "1", name: "", quantity: 1}
 
-  constructor(private productService: ProductService, private _bottomSheetRef: MatBottomSheetRef<TableSheetComponent>,
+  constructor(private productService: ProductService, private bottomSheetRef: MatBottomSheetRef<TableSheetComponent>,
               @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
     this.product = data
   }
 
   deleteProduct() {
     this.productService.deleteProduct(this.product)
+    this.bottomSheetRef.dismiss()
   }
 }

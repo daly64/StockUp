@@ -7,18 +7,12 @@ import {ProductModel} from "../models/ProductModel";
 })
 export class ProductService {
   Url = 'https://stockup-api.onrender.com/products'
-  products: ProductModel[]
 
   constructor(private httpClient: HttpClient) {
   }
 
   getAllProducts() {
-    // return this.httpClient.get<ProductModel[]>(this.Url)
-
-    this.httpClient.get<ProductModel[]>(this.Url)
-      .subscribe(data => this.products = data)
-    return this.products
-
+    return this.httpClient.get<ProductModel[]>(this.Url)
   }
 
   getProductById(product: ProductModel) {
