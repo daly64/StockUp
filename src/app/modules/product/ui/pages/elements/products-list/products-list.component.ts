@@ -3,14 +3,13 @@ import {ProductModel} from "../../../../models/ProductModel";
 import {TableSheetComponent} from "../table-sheet/table-sheet.component";
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {ProductService} from "../../../../services/product.service";
-import {Observable} from "rxjs";
 
 
 @Component({
   selector: 'productsList',
   template: `
-    <div *ngIf=" data$ | async as data">
-      <table [dataSource]=" data" class="mat-elevation-z0 list" mat-table>
+<!--    <div *ngIf=" data$ | async as data">-->
+      <table [dataSource]=" data()" class="mat-elevation-z0 list" mat-table>
         <ng-container matColumnDef="{{columnsToDisplay[0]}}">
           <th *matHeaderCellDef mat-header-cell> {{columnsToDisplay[0]}}</th>
           <td (click)="openBottomSheet(element)" *matCellDef="let element" mat-cell> {{element.name}} </td>
@@ -25,7 +24,7 @@ import {Observable} from "rxjs";
         <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
         <tr *matRowDef="let row; columns: columnsToDisplay;" mat-row></tr>
       </table>
-    </div>
+<!--    </div>-->
   `,
   styles: [`
     .list {
@@ -34,7 +33,8 @@ import {Observable} from "rxjs";
     }`],
 })
 export class ProductsListComponent {
-  data$: Observable<ProductModel[]> = this.productService.getAllProducts()
+  // data$: Observable<ProductModel[]> = this.productService.getAllProducts()
+  data = this.productService.Products
 
   columnsToDisplay = ['product name', 'quantity'];
 

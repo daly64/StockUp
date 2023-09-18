@@ -45,7 +45,7 @@ import {ProductModel} from "../../../../models/ProductModel";
 })
 export class AddProductDialogComponent {
   productName: string
-  productQuantity: number = 1
+  productQuantity: number
 
   constructor(
     public dialogRef: MatDialogRef<AddProductDialogComponent>,
@@ -55,8 +55,7 @@ export class AddProductDialogComponent {
   addProduct() {
     let newProduct: ProductModel = {name: this.productName, quantity: this.productQuantity}
     this.productService.addProduct(newProduct)
-    // refresh
-    window.location.reload()
+    // this.productService.updateProductsList()
     this.dialogRef.close();
   }
 
