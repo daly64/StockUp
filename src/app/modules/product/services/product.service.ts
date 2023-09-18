@@ -27,24 +27,20 @@ export class ProductService {
 
   addProduct(product: ProductModel) {
     this.httpClient.post(this.Url + "/add", product, {responseType: 'text'})
-      .subscribe({next: response => console.log(response), error: err => console.log(err)})
+      .subscribe({next: () => this.updateProductsList(), error: err => console.log(err)})
 
-    this.updateProductsList()
 
   }
 
   updateProduct(product: ProductModel) {
     this.httpClient.put(this.Url + "/update", product, {responseType: 'text'})
-      .subscribe({next: response => console.log(response), error: err => console.log(err)})
-
-    this.updateProductsList()
+      .subscribe({next: () => this.updateProductsList(), error: err => console.log(err)})
   }
 
   deleteProduct(product: ProductModel) {
     this.httpClient.delete(this.Url + "/delete", {body: product, responseType: 'text'})
-      .subscribe({next: response => console.log(response), error: err => console.log(err)})
+      .subscribe({next: () => this.updateProductsList(), error: err => console.log(err)})
 
-    this.updateProductsList()
   }
 
 
