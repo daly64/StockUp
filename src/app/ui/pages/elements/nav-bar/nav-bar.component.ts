@@ -49,7 +49,6 @@ export class NavBarComponent {
   }
 
   goAddProductPage() {
-    // this.router.navigate(["addProduct"])
     this.dialog.open(AddProductDialogComponent);
 
   }
